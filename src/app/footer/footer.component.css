@@ -1,0 +1,37 @@
+@media screen and (max-width: 600px) {
+  .image-footer-align {
+    text-align: center;
+  }
+
+  .footer-text-sm {
+    font-size: 10px;
+    padding-left: 20px;
+  }
+}
+
+.bg-purple {
+  background-color: #AE003F;
+}
+
+footer {
+  padding-top: 3px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.mt-60 {
+  margin-top: 60px;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+.image-footer-align {
+  text-align: left;
+}

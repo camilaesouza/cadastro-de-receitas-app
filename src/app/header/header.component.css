@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+  .padding-navbar {
+    padding-left: 1rem !important;
+  }
+}
+
+.padding-navbar {
+  padding-left: 6.3rem;
+}
+
+.bg-purple {
+  background-color: #AE003F;
+}
