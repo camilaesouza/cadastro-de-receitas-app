@@ -9,13 +9,9 @@
   }
 }
 
-.bg-purple {
-  background-color: #AE003F;
-}
-
 footer {
   padding-top: 3px;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
