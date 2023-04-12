@@ -1,38 +1,43 @@
 <div class="m-5">
   <div class="card">
     <div class="card-body margin-list-recipes">
-      <div [ngClass]="{'d-none' : !displayRecipesList}">
-        <div class="d-flex">
-          <div class="card w-300">
-            <img class="card-img-top" src="../../assets/images/card-image.jpg" alt="recipe">
-            <div class="card-body">
-              <h5 class="card-title">{{ this.recipes[0].name }}</h5>
-              <p class="card-text">{{ this.recipes[0].description }}</p>
-              <button (click)="onShowRecipe()" type="button" class="btn btn-gray btn-sm text-white">
-                <i class="bi bi-search"></i>
-              </button>
-            </div>
+      <div class="row col-6">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="bi bi-search"></i>
+            </span>
           </div>
+          <input
+            query=""
+            type="text"
+            class="form-control"
+            placeholder="Digite o nome da receita para buscar!"
+          />
         </div>
+
+        aaaaa{{ this.query }}
       </div>
 
-      <div [ngClass]="{'d-none' : displayRecipesList}" class="row col-12">
-        <div class="d-flex col-12">
-          <div class="col-10 justify-content-start">
-              <h3>{{ this.recipes[0].name }}</h3>
-              <span class="text-muted">{{ this.recipes[0].description }}</span>
-          </div>
-          <div class="col-2">
-              <img src="../../assets/images/image-show.png" alt="recipe" width="200">
-          </div>
-        </div>
+      <div class="d-flex">
+        <div class="card w-300">
+          <img
+            class="card-img-top"
+            src="../../assets/images/card-image.jpg"
+            alt="recipe"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ this.recipes[0].name }}</h5>
+            <p class="card-text">{{ this.recipes[0].description }}</p>
 
-        <div class="col-6">
-          {{ this.recipes[0].prepare }}
+            <a
+              [routerLink]="['/receitas', this.recipes[0].id]"
+              class="btn btn-gray btn-sm text-white"
+              ><i class="bi bi-eye"></i
+            ></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <button (click)="onShowRecipe()" [ngClass]="{'d-none' : displayRecipesList}" type="button" class="btn btn-purple mt-3">Voltar</button>
 </div>

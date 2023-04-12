@@ -2,6 +2,14 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+body {
+  min-height: 90vh;
+  position: relative;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #e5e8e3;
+}
+
 .btn-purple {
   background-color: #AE003F;
   color: white;
