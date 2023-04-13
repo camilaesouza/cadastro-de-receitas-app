@@ -1,0 +1,16 @@
+<div class="row col-6">
+  <div class="input-group mb-3">
+    <input
+      #query
+      name="query"
+      type="text"
+      class="form-control"
+      placeholder="Digite o nome da receita para buscar"
+    />
+    <div class="input-group-append">
+      <button (click)="filterRecipes()" class="btn btn-purple" type="button">
+        <i class="bi bi-search"></i>Buscar
+      </button>
+    </div>
+  </div>
+</div>

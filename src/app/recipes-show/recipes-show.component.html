@@ -1,0 +1,27 @@
+<div class="m-5">
+  <div class="card">
+    <div class="card-body margin-list-recipes">
+      <div *ngIf="this.recipe" class="row col-12">
+        <div class="d-flex col-12">
+          <div class="col-10 justify-content-start">
+              <h3>{{ this.recipe.name }}</h3>
+              <span class="text-muted">{{ this.recipe.description }}</span>
+          </div>
+          <div class="col-2">
+              <img src="../../assets/images/image-show.png" alt="recipe" width="200">
+          </div>
+        </div>
+
+        <div class="col-6">
+          {{ this.recipe.prepare }}
+        </div>
+      </div>
+      <div *ngIf="!this.recipe" class="d-flex justify-content-center">
+        Receita não foi encontrada!
+      </div>
+    </div>
+  </div>
+
+  <a [routerLink]="['/receitas']" class="btn btn-purple mt-3">Voltar</a>
+</div>
+
