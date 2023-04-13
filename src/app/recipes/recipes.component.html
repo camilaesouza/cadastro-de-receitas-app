@@ -1,25 +1,10 @@
 <div class="m-5">
   <div class="card">
     <div class="card-body margin-list-recipes">
-      <div class="row col-6">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">
-              <i class="bi bi-search"></i>
-            </span>
-          </div>
-          <input
-            query=""
-            type="text"
-            class="form-control"
-            placeholder="Digite o nome da receita para buscar!"
-          />
-        </div>
 
-        aaaaa{{ this.query }}
-      </div>
+      <app-search (queryChange)="onSearchRecipes($event)"></app-search>
 
-      <div class="d-flex">
+      <div *ngIf="this.recipes && this.recipes[0]" class="d-flex">
         <div class="card w-300">
           <img
             class="card-img-top"
@@ -37,6 +22,9 @@
             ></a>
           </div>
         </div>
+      </div>
+      <div *ngIf="!(this.recipes && this.recipes[0])" class="d-flex justify-content-center mt-3">
+        Nenhuma receita encontrada
       </div>
     </div>
   </div>

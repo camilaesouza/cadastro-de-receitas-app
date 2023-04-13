@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Recipe } from '../model/recipe';
 
 @Component({
@@ -24,5 +24,9 @@ export class RecipesComponent {
     );
 
     localStorage.setItem('recipes', JSON.stringify(this.recipes));
+  }
+
+  onSearchRecipes(recipes: Recipe[]):void {
+    this.recipes = recipes;
   }
 }
