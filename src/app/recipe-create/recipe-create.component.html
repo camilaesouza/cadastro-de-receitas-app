@@ -1,0 +1,146 @@
+<div class="m-5">
+  <div *ngIf="this.message" class="row d-flex justify-content-center align-items-center mt-5 mb-3">
+    <div class="spinner-border text-danger center-div col-md-6" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+  <div *ngIf="this.message" id="alert" class="alert alert-success mb-3" role="alert">
+    {{ this.message }}
+  </div>
+
+  <div class="card">
+    <div class="card-body margin-list-recipes">
+      <h3 class="mb-3">Criar receita</h3>
+
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label
+            for="title"
+            [ngClass]="{'is-invalid' : !inputTitle.valid && inputTitle.touched}">
+            Título *
+          </label>
+          <input
+            maxlength="50"
+            required
+            type="text"
+            class="form-control"
+            [ngClass]="{'is-invalid' : !inputTitle.valid && inputTitle.touched}"
+            id="title"
+            name="title"
+            placeholder="Título"
+            pattern="^[A-Za-zÀ-Úà-ú\s]+$"
+            title="Permitido apenas letras"
+            [(ngModel)]="title"
+            #inputTitle="ngModel"
+            >
+
+            <div class="text-danger small" *ngIf="!inputTitle.valid && inputTitle.touched">
+              Título da receita é obrigátorio, sendo apenas letras permitidas!
+            </div>
+        </div>
+        <div class="form-group mb-3">
+          <label
+            for="description"
+            [ngClass]="{'is-invalid' : !inputDescription.valid && inputDescription.touched}">
+            Descrição *
+          </label>
+          <input
+            maxlength="100"
+            required
+            type="text"
+            class="form-control"
+            id="description"
+            name="description"
+            placeholder="Descrição"
+            [ngClass]="{'is-invalid' : !inputDescription.valid && inputDescription.touched}"
+            pattern="^[A-Za-zÀ-Úà-ú\s]+$"
+            title="Permitido apenas letras"
+            [(ngModel)]="description"
+            #inputDescription="ngModel">
+
+            <div class="text-danger small" *ngIf="!inputDescription.valid && inputDescription.touched">
+              Descrição da receita é obrigátorio, sendo apenas letras permitidas!
+            </div>
+        </div>
+        <div class="form-group mb-3">
+          <label
+            for="author"
+            [ngClass]="{'is-invalid' : !inputAuthor.valid && inputAuthor.touched}">
+            Autor *
+          </label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="author"
+            name="author"
+            placeholder="Autor"
+            pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+            [ngClass]="{'is-invalid' : !inputAuthor.valid && inputAuthor.touched}"
+            title="Preencha o nome completo com apenas letras"
+            [(ngModel)]="author"
+            #inputAuthor="ngModel">
+
+            <div class="text-danger small" *ngIf="!inputAuthor.valid && inputAuthor.touched">
+              Autor da receita é obrigátorio, sendo apenas letras permitidas e o nome completo niciado com letra maíscula!
+            </div>
+        </div>
+        <div class="form-group mb-3 col-3">
+          <label
+            for="value"
+            [ngClass]="{'is-invalid' : !inputValue.valid && inputValue.touched}">
+            Valor aproximado gasto para a receita *
+          </label>
+          <input
+          required
+          type="number"
+          step="0.01"
+          class="form-control"
+          id="value"
+          name="value"
+          placeholder="00.00"
+          pattern="^(?![0,.]+$)(?:0|[1-9]\d{0,2}(?:,\d{3})*|[1-9]\d*)(?:\.\d{1,2})?$"
+          [ngClass]="{'is-invalid' : !inputValue.valid && inputValue.touched}"
+          title="Por exemplo: 12.50 ou 12"
+          [(ngModel)]="value"
+          #inputValue="ngModel">
+
+          <div class="text-danger small" *ngIf="!inputValue.valid && inputValue.touched">
+            Valor da receita é obrigátorio, com o formato seguindo esses exemplos 12.50 ou 12!
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="prepare"
+            [ngClass]="{'is-invalid' : !inputPrepare.valid && inputPrepare.touched}">
+            Modo de preparo *
+          </label>
+          <textarea
+            required
+            class="form-control"
+            name="prepare"
+            id="prepare"
+            cols="30"
+            rows="8"
+            [ngClass]="{'is-invalid' : !inputPrepare.valid && inputPrepare.touched}"
+            [(ngModel)]="prepare"
+            #inputPrepare="ngModel">
+          </textarea>
+
+          <div class="text-danger small" *ngIf="!inputPrepare.valid && inputPrepare.touched">
+            Modo de preparo da receita é obrigátorio!
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-end mt-3 mb-3">
+          <div>
+            <button type="submit" class="btn btn-dark" [disabled]="!form.valid">Criar</button>
+          </div>
+
+          <img width="100" src="../assets/images/create-icon.png" alt="icon">
+        </div>
+      </form>
+  </div>
+</div>
+
+<a [routerLink]="['/receitas']" class="btn btn-purple mt-3">Voltar</a>

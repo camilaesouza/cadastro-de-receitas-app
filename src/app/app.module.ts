@@ -9,6 +9,8 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipesShowComponent } from './recipes-show/recipes-show.component';
 import { SearchComponent } from './search/search.component';
 import { NotFoundErrorComponentComponent } from './not-found-error-component/not-found-error-component.component';
+import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { NotFoundErrorComponentComponent } from './not-found-error-component/not
     RecipesComponent,
     RecipesShowComponent,
     SearchComponent,
-    NotFoundErrorComponentComponent
+    NotFoundErrorComponentComponent,
+    RecipeCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

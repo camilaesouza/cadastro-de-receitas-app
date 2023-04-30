@@ -7,7 +7,7 @@ import { Recipe } from '../model/recipe';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent {
-  @ViewChild("query") query!: ElementRef;
+  @ViewChild('query') query!: ElementRef;
 
   filteredRecipes: Recipe[] = [];
   recipes: Recipe[] = [];

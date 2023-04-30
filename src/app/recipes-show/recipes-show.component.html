@@ -16,6 +16,17 @@
           {{ this.recipe.prepare }}
         </div>
       </div>
+
+      <div class="d-flex justify-content-between mt-5">
+        <div>
+          Valor aproximado para a receita foi de {{ this.recipe.value | currency }}
+        </div>
+
+        <div>
+          Autor {{ this.recipe.author }}
+        </div>
+      </div>
+
       <div *ngIf="!this.recipe" class="d-flex justify-content-center">
         Receita não foi encontrada!
       </div>

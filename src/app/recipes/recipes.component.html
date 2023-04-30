@@ -1,29 +1,41 @@
 <div class="m-5">
   <div class="card">
     <div class="card-body margin-list-recipes">
+      <div class="row col-12">
+        <app-search class="col-6 m-0 p-0" (queryChange)="onSearchRecipes($event)"></app-search>
 
-      <app-search (queryChange)="onSearchRecipes($event)"></app-search>
+        <div class="col-6 m-0 p-0">
+          <a
+            [routerLink]="['/criar-receita']"
+            class="btn btn-purple text-white"
+            ><i class="bi bi-plus"></i> Criar receita
+          </a>
+        </div>
+      </div>
 
-      <div *ngIf="this.recipes && this.recipes[0]" class="d-flex">
-        <div class="card w-300">
+      <div class="d-flex flex-wrap">
+        <div *ngFor="let recipe of this.recipes" class="card w-300 mr-20 mb-4">
           <img
             class="card-img-top"
             src="../../assets/images/card-image.jpg"
             alt="recipe"
           />
           <div class="card-body">
-            <h5 class="card-title">{{ this.recipes[0].name }}</h5>
-            <p class="card-text">{{ this.recipes[0].description }}</p>
+            <h5 class="card-title">{{ recipe.name }}</h5>
+            <p class="card-text">{{ recipe.description }}</p>
 
             <a
-              [routerLink]="['/receitas', this.recipes[0].id]"
+              [routerLink]="['/receitas', recipe.id]"
               class="btn btn-gray btn-sm text-white"
               ><i class="bi bi-eye"></i
             ></a>
           </div>
         </div>
       </div>
-      <div *ngIf="!(this.recipes && this.recipes[0])" class="d-flex justify-content-center mt-3">
+      <div
+        *ngIf="this.recipes && this.recipes.length == 0"
+        class="d-flex justify-content-center mt-3"
+      >
         Nenhuma receita encontrada
       </div>
     </div>

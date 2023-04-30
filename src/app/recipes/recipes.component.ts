@@ -14,16 +14,25 @@ export class RecipesComponent {
   }
 
   ngOnInit() {
-    this.recipes.push(
-      new Recipe(
-        '1',
-        'Bolo de chocolate',
-        'delicioso para seu café',
-        'Misture uma xicara de chocolate em pó, o mesmo de trigo, um ovo, 1 copo de agua morna, meia xicara de oleo, mexa até ficar homogeno e coloque asar po 45 minutos'
-      )
-    );
+    let recipesLocal = localStorage.getItem('recipes');
+    if(recipesLocal && JSON.parse(recipesLocal)) {
+      this.recipes = JSON.parse(recipesLocal);
+    }
 
-    localStorage.setItem('recipes', JSON.stringify(this.recipes));
+    if (this.recipes.length == 0) {
+      this.recipes.push(
+        new Recipe(
+          1,
+          'Bolo de chocolate',
+          'Camila Souza',
+          12.50,
+          'delicioso para seu café',
+          'Misture uma xicara de chocolate em pó, o mesmo de trigo, um ovo, 1 copo de agua morna, meia xicara de oleo, mexa até ficar homogeno e coloque asar po 45 minutos'
+        )
+      );
+
+      localStorage.setItem('recipes', JSON.stringify(this.recipes));
+    }
   }
 
   onSearchRecipes(recipes: Recipe[]):void {
