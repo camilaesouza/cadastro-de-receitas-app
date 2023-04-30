@@ -23,7 +23,7 @@ export class RecipesShowComponent {
     if(recipesLocal && JSON.parse(recipesLocal)) {
       let vm = this;
       JSON.parse(recipesLocal).map(function(recipe: Recipe) {
-        if(recipe.id == vm.recipeId) {
+        if(recipe.id.toString() == vm.recipeId) {
           vm.recipe = recipe;
         }
       });
