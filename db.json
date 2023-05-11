@@ -1,0 +1,36 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Bolo de chocolate",
+      "author": "Camila Souza",
+      "value": 12.5,
+      "description": "delicioso para seu café",
+      "prepare": "Misture uma xicara de chocolate em pó, o mesmo de trigo, um ovo, 1 copo de agua morna, meia xicara de oleo, mexa até ficar homogeno e coloque asar po 45 minutos"
+    },
+    {
+      "id": 2,
+      "name": "Bolo",
+      "author": "Camila Souza",
+      "value": 12,
+      "description": "Teste",
+      "prepare": "blaladbmkdamklmdsad"
+    },
+    {
+      "id": 3,
+      "name": "dsahdiuhasuidha",
+      "author": "Cashuidhas Dhasudasd",
+      "value": 12,
+      "description": "hdasiudhasu",
+      "prepare": "ksadpkaspodkasd"
+    },
+    {
+      "id": 4,
+      "name": "teste dsadas",
+      "author": "Adsadad Adasdas",
+      "value": 23,
+      "description": "dsadasd",
+      "prepare": "djsaoidjiosadsad"
+    }
+  ]
+}

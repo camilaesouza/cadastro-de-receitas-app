@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../model/recipe';
 import { ActivatedRoute } from '@angular/router';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipes-show',
@@ -8,25 +9,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./recipes-show.component.css']
 })
 export class RecipesShowComponent {
-  recipe!: Recipe;
+  recipe: Recipe | any;
   recipeId: String = '';
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private recipeService: RecipeService,
     ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const recipeId = this.route.snapshot.params['id'];
     this.recipeId = recipeId ? recipeId : '0';
 
-    let recipesLocal = localStorage.getItem('recipes');
-    if(recipesLocal && JSON.parse(recipesLocal)) {
-      let vm = this;
-      JSON.parse(recipesLocal).map(function(recipe: Recipe) {
-        if(recipe.id.toString() == vm.recipeId) {
-          vm.recipe = recipe;
-        }
-      });
-    }
+    this.recipe = await this.recipeService.getById(this.recipeId);
+
+    console.log('log', this.recipe);
   }
 }
