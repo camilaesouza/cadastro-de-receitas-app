@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../model/recipe';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-create',
@@ -21,19 +22,16 @@ export class RecipeCreateComponent {
   prepare: string = "";
 
   message: string = "";
+  messageError: string = "";
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private recipeService: RecipeService
   ) {}
 
-  onSubmit() {
-    this.recipes = [];
-
-    let recipesLocal = localStorage.getItem('recipes');
-    if(recipesLocal && JSON.parse(recipesLocal)) {
-      this.recipes = JSON.parse(recipesLocal);
-    }
+  async onSubmit() {
+    this.recipes = await this.recipeService.getAll();
 
     let id = 0;
     if (this.recipes && this.recipes.length > 0) {
@@ -49,12 +47,16 @@ export class RecipeCreateComponent {
       this.prepare
     );
 
-    this.recipes.push(this.recipe);
-    localStorage.setItem('recipes', JSON.stringify(this.recipes));
+    let hasSuccess = await this.recipeService.create(this.recipe);
 
-    this.message = 'Sucesso receita cadastrada!';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (hasSuccess) {
+      this.message = 'Sucesso receita cadastrada!';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    setTimeout(() => this.router.navigate(['/receitas', this.recipe.id]), 5000);
+      setTimeout(() => this.router.navigate(['/receitas', this.recipe.id]), 5000);
+    } else {
+      this.messageError = 'Houve um erro ao cadastrar a receita, tente novamente mais tarde!';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }

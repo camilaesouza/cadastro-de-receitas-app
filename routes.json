@@ -1,0 +1,5 @@
+{
+  "/receitas": "/recipes",
+  "/receitas/:id": "/recipes/:id",
+  "/receitas\\?nome=:name": "/recipes?name=:name"
+}

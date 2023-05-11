@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
 import { Recipe } from '../model/recipe';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-search',
@@ -14,28 +15,17 @@ export class SearchComponent {
 
   @Output() queryChange = new EventEmitter<Recipe[]>();
 
-  filterRecipes(): void {
-    let recipesLocal = localStorage.getItem('recipes');
-    if(recipesLocal && JSON.parse(recipesLocal)) {
-      this.recipes = JSON.parse(recipesLocal);
-    }
+  constructor(private recipeService: RecipeService) {}
+
+  async filterRecipes(): Promise<void> {
+    this.recipes = await this.recipeService.getAll();
 
     let query = this.query.nativeElement.value;
     if (!query || query.trim() == '') {
       return this.queryChange.emit(this.recipes);
     }
 
-    this.filteredRecipes = [];
-    let vm = this;
-    this.recipes.map(function(recipe) {
-        let recipeName = recipe.name.toLowerCase();
-        query = query.toLowerCase();
-
-        if (recipeName === query || recipeName.includes(query)) {
-          vm.filteredRecipes.push(recipe);
-        }
-    });
-
+    this.filteredRecipes = await this.recipeService.getByName(query);
     this.queryChange.emit(this.filteredRecipes);
   }
 }

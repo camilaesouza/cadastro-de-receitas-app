@@ -1,5 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { Recipe } from '../model/recipe';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipes',
@@ -9,30 +10,12 @@ import { Recipe } from '../model/recipe';
 export class RecipesComponent {
   recipes: Recipe[];
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
     this.recipes = [];
   }
 
-  ngOnInit() {
-    let recipesLocal = localStorage.getItem('recipes');
-    if(recipesLocal && JSON.parse(recipesLocal)) {
-      this.recipes = JSON.parse(recipesLocal);
-    }
-
-    if (this.recipes.length == 0) {
-      this.recipes.push(
-        new Recipe(
-          1,
-          'Bolo de chocolate',
-          'Camila Souza',
-          12.50,
-          'delicioso para seu café',
-          'Misture uma xicara de chocolate em pó, o mesmo de trigo, um ovo, 1 copo de agua morna, meia xicara de oleo, mexa até ficar homogeno e coloque asar po 45 minutos'
-        )
-      );
-
-      localStorage.setItem('recipes', JSON.stringify(this.recipes));
-    }
+  async ngOnInit() {
+    this.recipes = await this.recipeService.getAll();
   }
 
   onSearchRecipes(recipes: Recipe[]):void {
