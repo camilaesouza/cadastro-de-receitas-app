@@ -14,8 +14,12 @@ export class RecipesComponent {
     this.recipes = [];
   }
 
-  async ngOnInit() {
-    this.recipes = await this.recipeService.getAll();
+  ngOnInit() {
+   this.recipeService.getAll().subscribe((data) => {
+      if (data) {
+        this.recipes = data;
+      }
+    });
   }
 
   onSearchRecipes(recipes: Recipe[]):void {

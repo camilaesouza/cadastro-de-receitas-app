@@ -17,15 +17,23 @@ export class SearchComponent {
 
   constructor(private recipeService: RecipeService) {}
 
-  async filterRecipes(): Promise<void> {
-    this.recipes = await this.recipeService.getAll();
+  filterRecipes() {
+    this.recipeService.getAll().subscribe((data) => {
+      if (data) {
+        this.recipes = data;
+      }
+    });
 
     let query = this.query.nativeElement.value;
     if (!query || query.trim() == '') {
       return this.queryChange.emit(this.recipes);
     }
 
-    this.filteredRecipes = await this.recipeService.getByName(query);
-    this.queryChange.emit(this.filteredRecipes);
+    this.recipeService.getByName(query).subscribe((data) => {
+      if (data) {
+        this.filteredRecipes = data;
+        this.queryChange.emit(this.filteredRecipes);
+      }
+    });
   }
 }
