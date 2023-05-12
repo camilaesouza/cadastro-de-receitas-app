@@ -4,7 +4,7 @@
       <div *ngIf="this.recipe" class="row col-12">
         <div class="d-flex col-12">
           <div class="col-10 justify-content-start">
-              <h3>{{ this.recipe.name }}</h3>
+              <h3>{{ this.recipe.name | titlecase }}</h3>
               <span class="text-muted">{{ this.recipe.description }}</span>
           </div>
           <div class="col-2">
@@ -18,11 +18,11 @@
 
         <div class="d-flex justify-content-between mt-5">
           <div>
-            Valor aproximado para a receita foi de {{ this.recipe.value | currency }}
+            Valor aproximado para a receita foi de {{ this.recipe.value | currency:'R$ ' }}
           </div>
 
           <div>
-            Autor {{ this.recipe.author }}
+            Autor: {{ this.recipe.author | uppercase }}
           </div>
         </div>
       </div>

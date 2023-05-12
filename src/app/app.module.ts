@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { NotFoundErrorComponentComponent } from './not-found-error-component/not-found-error-component.component';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

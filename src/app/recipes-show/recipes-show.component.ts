@@ -17,12 +17,14 @@ export class RecipesShowComponent {
     private recipeService: RecipeService,
     ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     const recipeId = this.route.snapshot.params['id'];
     this.recipeId = recipeId ? recipeId : '0';
 
-    this.recipe = await this.recipeService.getById(this.recipeId);
-
-    console.log('log', this.recipe);
+    this.recipeService.getById(this.recipeId).subscribe((data) => {
+      if (data) {
+        this.recipe = data;
+      }
+    });
   }
 }
