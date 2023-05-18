@@ -20,7 +20,7 @@ export class RecipeService {
   }
 
   getByName(query: string) {
-    return this.httpClient.get<Recipe[]>(`${this.URL}?name=${query}`, this.httpOptions);
+    return this.httpClient.get<Recipe[]>(`${this.URL}?name_like=${query}`, this.httpOptions);
   }
 
   getById(id: String) {
