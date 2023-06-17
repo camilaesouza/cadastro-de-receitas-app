@@ -1,19 +1,9 @@
 <div class="m-5">
-  <div class="card">
+  <div class="card container">
     <div class="card-body margin-list-recipes">
-      <div class="row col-12">
-        <app-search class="col-6 m-0 p-0" (queryChange)="onSearchRecipes($event)"></app-search>
+      <app-search (queryChange)="onSearchRecipes($event)"></app-search>
 
-        <div class="col-6 m-0 p-0">
-          <a
-            [routerLink]="['/criar-receita']"
-            class="btn btn-purple text-white"
-            ><i class="bi bi-plus"></i> Criar receita
-          </a>
-        </div>
-      </div>
-
-      <div class="d-flex flex-wrap">
+      <div class="d-flex flex-wrap justify-content-center">
         <div *ngFor="let recipe of this.recipes" class="card w-300 mr-20 mb-4">
           <img
             class="card-img-top"
