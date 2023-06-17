@@ -1,16 +1,27 @@
-<div class="row col-12">
-  <div class="input-group mb-3">
+<div class="row col-12 justify-content-md-center mb-2">
+  <div class="col-lg-6 col-sm-12 col-md-12">
     <input
       #query
       name="query"
       type="text"
-      class="form-control"
+      class="form-control mb-2 mr-2"
       placeholder="Digite o nome da receita para buscar"
     />
-    <div class="input-group-append">
-      <button (click)="filterRecipes()" class="btn btn-purple" type="button">
-        <i class="bi bi-search"></i>Buscar
-      </button>
-    </div>
+  </div>
+  <div class="col-lg-2 col-sm-12 col-md-12">
+    <button
+      (click)="filterRecipes()"
+      class="btn btn-purple btn-block"
+      type="button"
+    >
+      <i class="bi bi-search mr-5"></i> Buscar
+    </button>
+  </div>
+  <div class="col-lg-3 col-sm-12 col-md-12">
+    <a
+      [routerLink]="['/criar-receita']"
+      class="btn btn-purple text-white float-right btn-block"
+      ><i class="bi bi-plus"></i> Criar receita
+   </a>
   </div>
 </div>

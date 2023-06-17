@@ -1,0 +1,15 @@
+.float-right {
+  float: none;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 992px) {
+  .float-right {
+    float: right !important;
+    margin-top: 0 !important;
+  }
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
